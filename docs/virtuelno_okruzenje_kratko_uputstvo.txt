@@ -1,0 +1,29 @@
+# VE = Virtual Enviroment (Virtuelno Okruzenje)
+
+# Kreiranje
+python -m venv venv
+
+# Aktiviranje na Linux-u
+source venv/bin/activate 
+# Aktiviranje na Windows-u
+venv\Scripts\activate
+
+# proverite koja verzija Pythona je u VE
+python -V
+
+# Lista svih instaliranih Python biblioteka u VE
+pip list
+
+# Ako je potrebno azuriramo pip alat
+python -m pip install --upgrade pip
+
+# Instaliramo ostale biblioteke po potrebi
+pip install pony
+pip install flask
+pip install ...
+
+# Instaliranje svih biblioteka iz fajla requirements.txt
+pip intall -r requirements.txt
+
+# Izlazak i VE (deaktivacije VE)
+deactivate
