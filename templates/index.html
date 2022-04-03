@@ -15,17 +15,26 @@
         position: sticky;width: 30%; height: 100px; float: right; background: rgb(135, 243, 100); text-align: center; margin-top: 2px; border-style: solid; border-color: black; border-width: 2px;
     }
     .divMain{
-        font-size: larger; position: relative; width: 70%; height: 500px; float: left; text-align: center; background-color: rgb(255, 255, 255); border-style: solid; border-color: black; border-width: 2px;
+        font-size: larger; position: sticky; width: 70%; height: 700px; float: left; text-align: center; background-color: rgb(255, 255, 255); border-style: solid; border-color: black; border-width: 2px;
     }
-    button{
-        position: absolute;
+    .odgovori button{
+        position:relative;
         background-color: rgb(35, 196, 245);
-        text-decoration-color: rgb(0, 0, 0);
-        width: 20;
-        height: 10;
+        width: 30%;
+        height: 15;
         color:black;
-        padding: 20px;
-        margin: 130px 150px;
+        padding: 30px 30px;
+        border: 1px solid rgb(35, 196, 245);
+        display: block;
+        margin: 10px 0px 0px 410px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+    .odgovori button:hover{
+        background-color: white;
+    }
+    .odgovori button:nth-child(1){
+        margin: 70px 0px 0px 410px;
     }
     </style>
     <body>
@@ -36,8 +45,13 @@
             <h1>RANG LISTA</h1>  
         </div>
         <div class="divMain">
-            <b>Pitanje....<br />....<br /> ... <br /></b>
-            <button type="submit">Odgovor1</button>
+            <b>Pitanje....<br />....<br /> ... <br /><br/></b>
+            <div class="odgovori">
+                <button type="button">Odgovor1</button>
+                <button type="button">Odgovor2</button>
+                <button type="button">Odgovor3</button>
+                <button type="button">Odgovor4</button>
+            </div>
         </div>
     </body>
 </html>
