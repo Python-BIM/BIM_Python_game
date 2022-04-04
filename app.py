@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify,Response, render_template
 from datetime import datetime
 
 app = Flask(__name__)
@@ -7,13 +7,17 @@ app = Flask(__name__)
 def hello_world():
     return "<h1><b>Dobro došli na Python obuku!</b></h1>"
 
+@app.route("/login")
+def login ():
+    return render_template("login.html")
+
 
 @app.route("/time")
 def show_time():
     return jsonify(datetime.now())
 
 
-from flask import Response
+
 @app.route("/src")
 def show_source():
     with open('app.py', 'r') as file:
