@@ -1,2 +1,2 @@
-pip install flask
-pip install pony
+flask
+pony
