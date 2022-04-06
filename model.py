@@ -10,7 +10,8 @@ class Users(db.Entity):
 
 
 class Questions(db.Entity):
-  question = Set("Answers")
+  question = Required(str)
+  options = Set("Answers")
   value_points = Required(int)
 
 
