@@ -29,3 +29,20 @@ else:
   db.bind(provider='sqlite', filename='database.sqlite', create_db=False)
   set_sql_debug(False)
   db.generate_mapping(create_tables=False)
+
+
+"""
+with db_session:
+  with open('Questions.txt', 'r') as f:
+    Lines = f.read().splitlines()
+
+    for i in range (len(Lines)):
+      Questions(question=Lines[i], value_points=i)
+
+
+with db_session:
+  with open('Answers.txt', 'r') as f:
+    Lines = f.read().splitlines()
+
+    for i in range (len(Lines)):
+      Answers(question=Lines[i], value_points=i)"""
