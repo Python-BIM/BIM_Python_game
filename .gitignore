@@ -1,2 +1,10 @@
 desktop.ini
-venv
+env/
+venv/
+.env
+.flaskenv
+.vscode
+.idea
+*.pyc
+*.pyo
+__pycache__
