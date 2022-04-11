@@ -1,11 +1,12 @@
 from flask import Flask, jsonify,Response, render_template
 from datetime import datetime
+from model import *
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return "<h1><b>Dobro došli na Python obuku!</b></h1>"
+    return render_template("index.html")
 
 @app.route("/login")
 def login ():
