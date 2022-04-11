@@ -1,4 +1,4 @@
-body {
+{
     padding: 0;
     margin: 0;
     font-family: sans-serif;
@@ -6,12 +6,11 @@ body {
 body {
     background: url('./bg.jpg') no-repeat;
     background-size:cover ;
-    border: dashed;
 }
 .login-form {
-    width: 350px;
-    top: 320px;
-    left: 800px;
+    width: 320px;
+    top: 415px;
+    left: 770px;
     transform: translate(-50%, -50%);
     position: absolute;
     color: #fff;
@@ -36,10 +35,11 @@ body {
     border-radius: 5px;
 }
 .login-form button {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    margin: 20px 0;
-    padding: 10px 15 px;
-    width: 50%;
-    border-radius: 5px;
+    margin: 30px 0;
+    padding: 20px 15 px;
+    width: 55%;
+    border-radius: 12px;
+    border: 0 ;
 }

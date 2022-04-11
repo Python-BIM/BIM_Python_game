@@ -12,6 +12,7 @@ def login ():
     return render_template("login.html")
 
 
+
 @app.route("/time")
 def show_time():
     return jsonify(datetime.now())
