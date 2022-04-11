@@ -27,5 +27,5 @@ if __name__ == '__main__':
   db.generate_mapping(create_tables=True)
 else:
   db.bind(provider='sqlite', filename='database.sqlite', create_db=False)
-  set_sql_debug(True)
-  db.generate_mapping(create_tables=True)
+  set_sql_debug(False)
+  db.generate_mapping(create_tables=False)
