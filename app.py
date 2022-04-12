@@ -5,7 +5,7 @@ from model import *
 app = Flask(__name__)
 
 @app.route("/")
-def hello_world():
+def index():
     return render_template("index.html")
 
 @app.route("/login")
@@ -32,3 +32,4 @@ if __name__ == '__main__':
     print('Web server is running ...',)
     # app.secret_key=''
     app.run(host='0.0.0.0', debug=True)
+# %%
