@@ -1,8 +1,9 @@
+from flask_login import UserMixin
 from pony.orm import *
 
 db = Database()
 
-class Users(db.Entity):
+class Users(db.Entity, UserMixin):
   email = PrimaryKey(str)
   nickname = Required(str, unique=True)
   password = Required(str)
