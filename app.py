@@ -26,7 +26,10 @@ def logovanje ():
     username = request.form['user']
     password = request.form['password']
     user = db.Users.get(email=username)
-    if (not user):
+    sifra_iz_baze = user.password 
+    print(sifra_iz_baze)
+    #sifra_iz_baze = db.Users.get(password=username)
+    if (sifra_iz_baze!=password):
         flash("Pogresan username ili password!")
         print("Pogresan username ili password!")
         return redirect("/login")
