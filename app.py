@@ -18,7 +18,8 @@ def load_user(user_id):
 @login_required
 # pogledati sta se desava kada odemo na /game
 def game():
-    return render_template("index.html")
+    users = select(u for u in Users)
+    return render_template("index.html", users=users)
 
 # @app.route("/login")
 @app.route("/")

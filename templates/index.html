@@ -39,11 +39,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <body>
+    
         <div class="divTajmer">
             <h1>TAJMER</h1>
         </div>
         <div class="divRang">
-            <h1>RANG LISTA</h1>  
+            <h1>RANG LISTA</h1> 
         </div>
         <div class="divMain">
             <b>Pitanje....<br />....<br /> ... <br /><br/></b>
@@ -54,10 +55,15 @@
                 <button type="button">Odgovor4</button>
             </div>
         </div>
-        <table>
-            <tr>
-                <th>Korisnik</th>
-                    <th>Poeni</th>
+        <div class="divRang">
+            <table>
+                <th>Korisnik</th> <th>Poeni</th>
+                {% for user in users  %}
+                <tr><td>{{ user.nickname}}</td><td>{{user.points}}</td></tr>
+                {% endfor %}
             </table>
+            
+        </div>
+        
     </body>
 </html>
