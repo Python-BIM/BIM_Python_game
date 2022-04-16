@@ -1,10 +1,12 @@
+from enum import unique
 from flask_login import UserMixin
 from pony.orm import *
 
 db = Database()
 
 class Users(db.Entity, UserMixin):
-  email = PrimaryKey(str)
+  id = PrimaryKey(str)
+  email = Required(str, unique=True)
   nickname = Required(str, unique=True)
   password = Required(str)
   points = Optional(int)  
