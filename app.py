@@ -19,7 +19,12 @@ def load_user(user_id):
 # pogledati sta se desava kada odemo na /game
 def game():
     users = select(u for u in Users)
-    return render_template("index.html", users=users)
+    question = list(select(q for q in Questions))[0]
+    data = {
+        "users" : users,
+        "question" : question
+    }
+    return render_template("index.html", data=data)
 
 # @app.route("/login")
 @app.route("/")

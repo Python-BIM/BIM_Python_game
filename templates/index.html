@@ -47,18 +47,17 @@
             <h1>RANG LISTA</h1> 
         </div>
         <div class="divMain">
-            <b>Pitanje....<br />....<br /> ... <br /><br/></b>
+            <b>Pitanje: <br />{{data.question.question}}</b>
             <div class="odgovori">
-                <button type="button">Odgovor1</button>
-                <button type="button">Odgovor2</button>
-                <button type="button">Odgovor3</button>
-                <button type="button">Odgovor4</button>
+                {% for odg in data.question.options  %}
+                <button type="button">{{odg.answer}}</button>
+                {% endfor %}
             </div>
         </div>
         <div class="divRang">
             <table>
                 <th>Korisnik</th> <th>Poeni</th>
-                {% for user in users  %}
+                {% for user in data.users  %}
                 <tr><td>{{ user.nickname}}</td><td>{{user.points}}</td></tr>
                 {% endfor %}
             </table>
