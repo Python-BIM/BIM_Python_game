@@ -13,12 +13,16 @@ login_manager.login_view = 'login'
 def load_user(user_id):
     return db.Users.get(id=user_id)
 
-@app.route("/")
-def index():
+# @app.route("/")
+@app.route("/game")
+@login_required
+# pogledati sta se desava kada odemo na /game
+def game():
     return render_template("index.html")
 
-@app.route("/login")
-def login ():
+# @app.route("/login")
+@app.route("/")
+def login():
     return render_template("login.html")
 
 @app.route("/logovanje", methods=["POST"])
@@ -27,16 +31,15 @@ def logovanje ():
     password = request.form['password']
     user = db.Users.get(email=username)
     sifra_iz_baze = user.password 
-    print(sifra_iz_baze)
-    #sifra_iz_baze = db.Users.get(password=username)
+   
     if (sifra_iz_baze!=password):
         flash("Pogresan username ili password!")
         print("Pogresan username ili password!")
-        return redirect("/login")
+        return redirect("/")
     else: 
         print('+++ logovanje OK')
         login_user(user)
-        return redirect("/")
+        return redirect("/game")
         
 
 @app.route("/time")
