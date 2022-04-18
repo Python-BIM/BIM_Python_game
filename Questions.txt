@@ -1,10 +1,16 @@
-What is something you feel is unacceptable that is still being done today?
-What's simply too difficult?
-What is something that you find mildly annoying, but not annoying enough to do anything about?
-What thing from childhood do you still enjoy to this day?
-How do you make decisions?
-What was your last "ah-ha" moment?
-If you had the opportunity to look through someone's email without them knowing, would you?
-What country sounds interesting but you know very little about it?
-What's something that is common today that humans will be embarrassed about doing in 50 years?
-What was a past passion that you can't believe you were so passionate about?
+question,value_points
+"Šta kao rezultat daje bin(5)",1
+"Koliko iznosi broj google",2
+"Dat je skup A={1, 2, 3}. Da bi rezultat A==B bio False, B mora biti",1
+"Za a = [3, 2, 1], sum(a + [1] + [-1]) je jednako",2
+"Koji izraz daje rezultat True",1
+"chr(ord('b')+1) je",1
+"Koja linija u Python daje vrednost 1",2
+"Ako je vrata = (85, 200), kada otkucamo vrata[1] = 150 dobijamo",2
+"Izaberite izraz koji daje rezultat True:",2
+"Ako je len('tri'+str(a)) jednako 5, koliko je a?",3
+"Koja je komanda za petlju u Python-u?",1
+"Koja komanda na ekranu štampa аа+а",3
+"Koji izraz za a='12345' daje rezultat '1'",2
+"Izaberite primer u Python-u 3 tako da se kreira sekvenca [10, 12, 14, 16]",3
+"Za s='  Henry+V+', s.strip().lower().replace('+','') vraća string:",3

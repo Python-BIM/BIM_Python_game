@@ -1,6 +1,7 @@
 desktop.ini
 env/
 venv/
+tmp/
 .env
 .flaskenv
 .vscode

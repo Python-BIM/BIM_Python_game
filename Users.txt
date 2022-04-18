@@ -1,0 +1,10 @@
+id,email,nickname,password,points
+1,dordje@gmail.com,dordje,dordje,10
+2,misa@gmail.com,misa,misa,15
+3,nenad@gmail.com,nenad,nenad,2
+4,lazar@gmail.com,lazar,lazar,5
+5,luka@gmail.com,luka,luka,1
+6,bilja@gmail.com,bilja,bilja,1
+7,natasa@gmail.com,natasa,natasa,0
+8,zzexxyy@gmail.com,zexy,zzexxyy,0
+9,test,test,test,0

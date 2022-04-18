@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .box {
+                border: solid 1px;
+                border-color: black;
+            }
+            
+            #grid {
+                display: grid;
+                width: 100%;
+                text-align: center;
+                grid-template-columns: 2.5fr 1fr;
+            }
+            
+            #vreme {
+                background-color: rgb(190, 160, 190);
+            }
+            
+            #rang {
+                background-color: rgb(100, 240, 100);
+            }
+            
+            #main {
+                background-color: rgb(220, 220, 240);
+                padding: 20px;
+            }
+            
+            #rlista {
+                text-align: left;
+                background-color: rgb(80, 200, 80);
+                padding: 20px;
+            }
+
+            .broj {
+                text-align: right;
+            }
+
+            .odgovori button {
+                position:relative;
+                background-color: rgb(35, 196, 245);
+                width: 30%;
+                height: 15;
+                color:black;
+                padding: 30px 30px;
+                border: 1px solid rgb(35, 196, 245);
+                display: block;
+                margin: 10px 0px 0px 330px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+            }
+            
+            .odgovori button:hover {
+                background-color: white;
+            }
+            
+            .odgovori button:nth-child(1) {
+                margin: 70px 0px 0px 33
+            }
+
+        </style>
+
+    </head>
+<body>
+
+<div id="grid" class="box">
+    <div id="vreme" class="box"><h2>VREME</h2>
+        <h1><div id="timer">1:00</div></h1>    
+    </div>
+    
+    <div id="rang" class="box"><h2>RANG LISTA</h2></div>
+    
+    <div id="main" class="box">
+        <b>Pitanje: <br />{{data.question.question}}</b>
+        <div class="odgovori">
+            {% for odg in data.question.options  %}
+            <button type="button">{{odg.answer}}</button>
+            {% endfor %}
+        </div>
+        <button>Dalje >></button>
+    </div>
+
+    <div id="rlista" class="box">
+        <table>
+            <th>Korisnik</th> <th>Poeni</th>
+            {% for user in data.users  %}
+            <tr><td>{{ user.nickname}}</td><td class="broj">{{user.points}}</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</div>
+
+<script>
+    setInterval(myTimer, 1000);
+    var time = new Date(0);
+    time.setSeconds(60);
+    
+    function myTimer() {
+        time.setSeconds(time.getSeconds() - 1);
+        var t = time.toISOString().substr(15, 4); 
+        document.getElementById("timer").innerHTML = t;
+    }
+
+</script>
+
+</body>
+</html>
