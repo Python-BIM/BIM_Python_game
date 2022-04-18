@@ -76,7 +76,7 @@
         <b>Pitanje: <br />{{data.question.question}}</b>
         <div class="odgovori">
             {% for odg in data.question.options  %}
-            <button type="button">{{odg.answer}}</button>
+            <button class="dugmad" type="button">{{odg.answer}} </button>
             {% endfor %}
         </div>
         <button>Dalje >></button>
@@ -96,12 +96,26 @@
 <script>
     setInterval(myTimer, 1000);
     var time = new Date(0);
-    time.setSeconds(60);
+    time.setSeconds(5);
     
     function myTimer() {
-        time.setSeconds(time.getSeconds() - 1);
-        var t = time.toISOString().substr(15, 4); 
-        document.getElementById("timer").innerHTML = t;
+        var sec = time.getSeconds();
+        if (sec > 0) {
+            time.setSeconds(time.getSeconds() - 1);
+            var t = time.toISOString().substr(15, 4); 
+            document.getElementById("timer").innerHTML = t;
+        }
+        if (t == "0:00") {
+            document.getElementById("vreme").style.color = "red";
+            document.getElementById("vreme").innerHTML = "<h2>VREME JE ISTEKLO</h2><h1><div id=\"timer\">0:00</div></h1>"; 
+            // document.getElementById("myBtn").disabled = true;
+            dug = document.getElementsByClassName("dugmad");
+            dug[0].style = "background:#ccc;color:gray";
+            dug[1].style = "background:#ccc;color:gray";
+            dug[2].style = "background:#ccc;color:gray";
+            dug[3].style = "background:#ccc;color:gray";
+
+        }
     }
 
 </script>
