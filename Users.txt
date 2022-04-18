@@ -1,5 +1,5 @@
 id,email,nickname,password,points
-1,dordje@gmail.com,dordje,dordje,10
+1,djordje@gmail.com,djordje,djordje,10
 2,misa@gmail.com,misa,misa,15
 3,nenad@gmail.com,nenad,nenad,2
 4,lazar@gmail.com,lazar,lazar,5
