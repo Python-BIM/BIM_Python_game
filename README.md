@@ -21,9 +21,12 @@ python -m venv venv
 5. Instalirajte sve potrebne biblioteke
 pip intall -r requirements.txt
 
-6. Startujete aplikaciju sa 
+6. Importujete podatke iz .txt fajlova u sqlite bazu sa
+python model.py
+
+7. Startujete aplikaciju sa 
 python app.py
 
-7. Pokrenete web pregledač (web browser) i otvorite adresu
+8. Pokrenete web pregledač (web browser) i otvorite adresu
 localhost:5000
 
