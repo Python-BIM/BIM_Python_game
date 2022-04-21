@@ -1,6 +1,6 @@
 from flask import Flask, jsonify,Response, redirect, render_template, request, flash
 from pony.flask import Pony
-from flask_login import LoginManager, UserMixin, login_required, login_user
+from flask_login import LoginManager, UserMixin, login_required, login_user, current_user
 from datetime import datetime
 from random import randint
 from model import *
@@ -10,19 +10,31 @@ Pony(app)
 login_manager = LoginManager(app)
 login_manager.login_view = '/'
 
+odgovori = {}
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return db.Users.get(id=user_id)
 
-@app.route("/game/<int:pitanje>")
+# @app.route("/game/<int:pitanje>")
+@app.route("/game/<int:pitanje>/<int:odg>")
 @login_required
-def game(pitanje):
+def game(pitanje, odg):
+    global odgovori
     users = select(u for u in Users)
-    all_questions = list(select(q for q in Questions))
-    question = all_questions[pitanje]
+    n_pit = len(select(q for q in Questions))
+    
+    if odg != 0:
+        odgovori.update({pitanje-1: odg})
+        
+    if pitanje > n_pit:
+        return redirect("/kraj")
+    
     data = {
         "users" : users,
-        "question" : question
+        "question" : Questions[pitanje],
+        "nextlink": f'/game/{pitanje+1}',
     }
     return render_template("game.html", data=data)
 
@@ -41,7 +53,8 @@ def logovanje ():
         if (sifra_iz_baze == password):
             print('logovanje OK')
             login_user(user)
-            return redirect("/game/0")
+            # print(current_user.get_id())
+            return redirect("/game/1/0")
     else:    
         flash("Pogresan username ili password!")
         print("Pogresan username ili password!")
@@ -49,12 +62,30 @@ def logovanje ():
         
     
 
-@app.route("/ranglista/<int:pitanja>", methods=["POST"])
-def kraj(broj_poena):
+@app.route("/kraj")
+@login_required
+def kraj():
     """
-    poslednji korak koji proverava tacne odgovore i snima broj poena u tabelu Users
-    """
-    
+    poslednji korak koji proverava tacne odgovore i upisuje broj poena u tabelu Users
+    """ 
+    poena = 0   
+    for (pit, odg) in odgovori.items():
+        if Answers[odg].the_value == 1:
+            poena += Questions[pit].value_points
+        
+    userid  = current_user.get_id()
+    print(userid)
+
+    if poena >  Users[userid].points:
+        with db_session:
+            Users[userid].points= poena
+
+    # Isctrava poslednju stranicu sa obavestenjem da je igra zavrsena
+    data = {
+        'users' : select(u for u in Users),
+        'poena': poena
+    }
+    return render_template("kraj.html", data=data)
 
 
 
@@ -69,4 +100,4 @@ if __name__ == '__main__':
     print('Web server is running ...',)
     app.secret_key='secret123'
     app.run(host='0.0.0.0', debug=True)
-# %%
+

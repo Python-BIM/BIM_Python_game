@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .box {
+                border: solid 1px;
+                border-color: black;
+            }
+            
+            #grid {
+                display: grid;
+                width: 100%;
+                text-align: center;
+                grid-template-columns: 2.5fr 1fr;
+            }
+            
+            #vreme {
+                background-color: rgb(231, 188, 131);
+            }
+            
+            #rang {
+                background-color: rgb(100, 240, 100);
+            }
+            
+            #main {
+                background-color: rgb(161, 203, 241);
+                padding: 20px;
+            }
+            
+            #rlista {
+                text-align: left;
+                background-color: rgb(80, 200, 80);
+                padding: 20px;
+            }
+
+            .broj {
+                text-align: right;
+            }
+
+
+        </style>
+
+    </head>
+<body>
+
+<div id="grid" class="box">
+    <div id="vreme" class="box"><h2>KRAJ IGRE</h2>
+    </div>
+    
+    <div id="rang" class="box"><h2>RANG LISTA</h2></div>
+    
+    <div id="main" class="box">
+        <h3>osvojili ste {{data.poena}} poena</h3>
+        
+    </div>
+
+    <div id="rlista" class="box">
+        <table>
+            <th>Korisnik</th> <th>Poeni</th>
+            {% for user in data.users  %}
+            <tr><td>{{ user.nickname}}</td><td class="broj">{{user.points}}</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</div>
+
+
+</body>
+</html>

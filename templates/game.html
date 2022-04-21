@@ -76,10 +76,12 @@
         <b>Pitanje: <br />{{data.question.question}}</b>
         <div class="odgovori">
             {% for odg in data.question.options  %}
+            <a href="{{data.nextlink}}/{{odg.id}}">
             <button class="dugmad" type="button">{{odg.answer}} </button>
+            </a>
             {% endfor %}
         </div>
-        <button>Dalje >></button>
+        
     </div>
 
     <div id="rlista" class="box">
@@ -96,7 +98,7 @@
 <script>
     setInterval(myTimer, 1000);
     var time = new Date(0);
-    time.setSeconds(5);
+    time.setSeconds(60);
     
     function myTimer() {
         var sec = time.getSeconds();
@@ -117,6 +119,7 @@
 
         }
     }
+
 
 </script>
 
