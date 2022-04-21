@@ -14,19 +14,18 @@ login_manager.login_view = '/'
 def load_user(user_id):
     return db.Users.get(id=user_id)
 
-@app.route("/game")
+@app.route("/game/<int:pitanje>")
 @login_required
-def game():
+def game(pitanje):
     users = select(u for u in Users)
     all_questions = list(select(q for q in Questions))
-    # izaberi slucajno pitanje
-    question = all_questions[ randint(0, len(all_questions)-1) ]
+    question = all_questions[pitanje]
     data = {
         "users" : users,
         "question" : question
     }
     return render_template("game.html", data=data)
-    # return render_template("index.html", data=data)
+
 
 @app.route("/")
 def login():
@@ -42,15 +41,26 @@ def logovanje ():
         if (sifra_iz_baze == password):
             print('logovanje OK')
             login_user(user)
-            return redirect("/game")
+            return redirect("/game/0")
     else:    
         flash("Pogresan username ili password!")
         print("Pogresan username ili password!")
         return redirect("/")
         
     
+
+@app.route("/ranglista/<int:pitanja>", methods=["POST"])
+def kraj(broj_poena):
+    """
+    poslednji korak koji proverava tacne odgovore i snima broj poena u tabelu Users
+    """
+    
+
+
+
 @app.route("/time")
 def show_time():
+    ''' Prikazuje vreme na serveru '''
     return jsonify(datetime.now())
 
 
