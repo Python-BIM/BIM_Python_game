@@ -94,10 +94,10 @@ def show_time():
     ''' Prikazuje vreme na serveru '''
     return jsonify(datetime.now())
 
-
+app.secret_key = 'secret123'
 
 if __name__ == '__main__':
     print('Web server is running ...',)
-    app.secret_key='secret123'
+
     app.run(host='0.0.0.0', debug=True)
 
