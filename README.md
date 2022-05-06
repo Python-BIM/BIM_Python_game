@@ -3,6 +3,7 @@ Završni projekat BIM Python kursa.
 
 Edukativni kviz za proveru znanja iz programiranja u Python-u.
 
+Online verzija je dostupna na: http://bim0python.pythonanywhere.com/
 
 Instalacija:
 Za instalaciju i pokretanje aplikacije sa vašeg računara potrebno je da:
