@@ -43,11 +43,34 @@ def game(pitanje, odg):
 def login():
     return render_template("login.html")
 
+@app.route("/register")
+def register():
+    return render_template("register.html")
+
+@app.route("/registrovanje", methods=["POST"])
+def registrovanje():
+    nickname = request.form["nickname"]
+    password = request.form["password"]
+    email = request.form["email"]
+    if nickname == "" or password == "" or email == "":
+        flash("Sva polja moraju biti popunjena!")
+        return redirect("/register")
+    if db.Users.get(nickname=nickname):
+        flash("Korisnicko ime vec postoji!")
+        return redirect("/register")
+    if db.Users.get(email=email):
+        flash("Email vec postoji!")
+        return redirect("/register")
+    user = db.Users(id = max(u.id for u in Users) + 1, nickname = nickname, email = email, password = password, points = 0)
+    db.commit()
+    login_user(user)
+    return redirect("/game/1/0")
+
 @app.route("/logovanje", methods=["POST"])
 def logovanje ():
-    username = request.form['user']
+    email = request.form['email']
     password = request.form['password']
-    user = db.Users.get(email=username)
+    user = db.Users.get(email=email)
     if user:
         sifra_iz_baze = user.password     
         if (sifra_iz_baze == password):
@@ -56,8 +79,8 @@ def logovanje ():
             # print(current_user.get_id())
             return redirect("/game/1/0")
     else:    
-        flash("Pogresan username ili password!")
-        print("Pogresan username ili password!")
+        flash("Pogresan nickname ili password!")
+        print("Pogresan nickname ili password!")
         return redirect("/")
         
     

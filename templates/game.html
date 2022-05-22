@@ -98,7 +98,7 @@
 <script>
     var time = 30;
     document.getElementById("timer").innerHTML = `${time}s`;
-    setInterval(myTimer, 1000);
+    interval = setInterval(myTimer, 1000);
     
     
     function myTimer() {
@@ -116,6 +116,7 @@
                 btn.style = "background:#ccc;color:gray";
                 btn.disabled = true;
             }
+            clearInterval(interval);
            
 
         }

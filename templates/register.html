@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <title>Login</title>
+       <title>Register</title>
        <link rel="stylesheet" type="text/css" href="../static/style.css">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -9,14 +9,16 @@
     <body>
 
 <div class="login-form">
-    <h1>Login</h1>
-    <form action="/logovanje" method="post">
+    <h1>Registracija</h1>
+    <form action="/registrovanje" method="post">
+    <p>Nadimak</p>
+    <input type="text" name="nickname" placeholder="Nadimak">
     <p>Email</p>
     <input type="email" name="email" placeholder="Email">
     <p>Lozinka</p>
     <input type="password" name="password" placeholder="Lozinka">
-    <button type="submit">Uloguj se</button>
-    <p>Nemas nalog? <a href="/register">Registruj se</a></p>
+    <button type="submit">Registruj se</button>
+    <p>Vec imas nalog? <a href="/">Uloguj se</a></p>
     </form>
 </div>
     </body>
