@@ -22,7 +22,7 @@ def load_user(user_id):
 @login_required
 def game(pitanje, odg):
     global odgovori
-    users = select(u for u in Users)
+    users = list(select(u for u in Users))
     n_pit = len(select(q for q in Questions))
     
     if odg != 0:
@@ -30,7 +30,7 @@ def game(pitanje, odg):
         
     if pitanje > n_pit:
         return redirect("/kraj")
-    
+    users.sort(key=lambda x: x.points, reverse=True)
     data = {
         "users" : users,
         "question" : Questions[pitanje],
@@ -104,8 +104,10 @@ def kraj():
             Users[userid].points= poena
 
     # Isctrava poslednju stranicu sa obavestenjem da je igra zavrsena
+    users = list(select(u for u in Users))
+    users.sort(key=lambda x: x.points, reverse=True)
     data = {
-        'users' : select(u for u in Users),
+        'users' : users,
         'poena': poena
     }
     return render_template("kraj.html", data=data)
