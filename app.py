@@ -22,11 +22,16 @@ def load_user(user_id):
 @login_required
 def game(pitanje, odg):
     global odgovori
+    userid = current_user.get_id()
     users = list(select(u for u in Users))
     n_pit = len(select(q for q in Questions))
     
     if odg != 0:
-        odgovori.update({pitanje-1: odg})
+        try:
+            odgovori[userid].update({pitanje-1: odg})
+        except:
+            odgovori[userid] = {}
+            odgovori[userid].update({pitanje-1: odg})
         
     if pitanje > n_pit:
         return redirect("/kraj")
@@ -91,18 +96,25 @@ def kraj():
     """
     poslednji korak koji proverava tacne odgovore i upisuje broj poena u tabelu Users
     """ 
-    poena = 0   
-    for (pit, odg) in odgovori.items():
+    poena = 0
+    userid  = current_user.get_id()
+    userodg = {}
+    try:
+        userodg = odgovori[userid].items()
+    except:
+        return redirect("/game/1/0")   
+    for (pit, odg) in userodg:
         if Answers[odg].the_value == 1:
             poena += Questions[pit].value_points
         
-    userid  = current_user.get_id()
+    
     print(userid)
 
     if poena >  Users[userid].points:
         with db_session:
             Users[userid].points= poena
 
+    odgovori[userid] = None
     # Isctrava poslednju stranicu sa obavestenjem da je igra zavrsena
     users = list(select(u for u in Users))
     users.sort(key=lambda x: x.points, reverse=True)
