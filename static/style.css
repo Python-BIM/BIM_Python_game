@@ -5,13 +5,13 @@
 }*/
 body {
     background: url('./bg2.jpg') no-repeat;
-    background-size:cover ;
+    background-size: cover ;
     background-position: center center;
     background-attachment: fixed;
 }
 .login-form {
     padding:10vh 0;
-    width: 30%;
+    width: 40%;
     text-align: center;
     margin: auto;
     /*transform: translate(-50%, -50%);*/
@@ -22,7 +22,7 @@ body {
     font-size: 40px;
     text-align: center;
     text-transform: uppercase;
-    margin: 40px 0;
+    right: auto;
 }
 .login-form p {
     font-size:20px ;
@@ -31,20 +31,21 @@ body {
 }
 .login-form input {
     font-size: 16px;
-    width: 100%;
+    width: 50%;
     padding: 1vh 1vh;
     border: 0;
     outline: none;
     border-radius: 5px;
 }
 .login-form button {
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: bold;
     margin: 30px 0;
-    padding: 20px 15 px;
-    width: 60%;
+    padding: 3% 1%;
+    width: 55%;
     border-radius: 12px;
     border: 0 ;
+    background-color: ;
 }
 
 a:link {
@@ -70,13 +71,24 @@ a:link {
     background-color: transparent;
     text-decoration: underline;
   }
-@media screen and (max-width: 480) {
+@media screen and (max-width: 480px) {
     .login-form input {
         font-size: 16px;
-        width: 100%;
-        padding: 20px;
+        width: 50%;
+        padding: 2vh 5vh;
         border: 0;
         outline: none;
         border-radius: 5px;
+    }
+    .login-form button {
+        font-size: 1rem;
+        font-weight: bold;
+        margin: 30px 0;
+        
+        width: 80%;
+        padding: 2vw 5vw;
+        border-radius: 12px;
+        border: 0 ;
+        
     }
 }
